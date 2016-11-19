@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Test";
+}
+<div class="row currencies">
+    @await Component.InvokeAsync(nameof(ExchangeRates))
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <p id="logo-container" class="lead">
+            <canvas id=logo-canvas height="150px" width="150px"
+                    style="margin-left:35px;"></canvas>
+        </p>
+        @await Component.InvokeAsync(nameof(CategoryList))
+    </div>
+    <div class="col-md-9">
+        @if (ViewBag.ChosenCategory == null)
+        {
+            @await Component.InvokeAsync(nameof(AllProductsList))
+        }
+        else
+        {
+            @await Component.InvokeAsync(nameof(ProductListByCategory), ViewBag.ChosenCategory.ID)
+        }
+    </div>
+</div>
+@if (ViewBag.ChosenCategory == null)
+{
+    <div class="row">
+        <video width="640" height="360" id="player1" preload="none">
+            <source type="video/youtube" src="http://www.youtube.com/watch?v=E6E2UbvHkJU" />
+        </video>
+    </div>
+}
+
+@section Scripts{
+    <script src="~/lib/mediaelement/mediaelement-and-player.min.js"></script>
+
+    <script src="~/js/canvasinit.js"></script>
+    <script src="~/js/videoplayerinit.js"></script>
+}
+
+@section Styles{
+    <link href="~/lib/mediaelement/mediaelementplayer.min.css" rel="stylesheet" />
+}

@@ -1,0 +1,7 @@
+﻿@model IEnumerable<Product>
+
+<div class="row" style="margin-left: 2px;">
+    All products
+</div>
+
+@await Component.InvokeAsync(nameof(ProductListFromList), Model)

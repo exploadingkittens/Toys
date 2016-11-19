@@ -1,0 +1,125 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+    
+    <link href="~/css/SharedStyles.css" rel="stylesheet" />
+    @RenderSection("Styles", false)
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    Hello
+                    @if (PrincipalExtensions.IsSignedIn(User))
+                    {
+                        @PrincipalExtensions.GetUserName(User)
+                    }
+                    else
+                    {
+                        <text>Guest</text>
+                    }
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a asp-controller="Products" asp-action="MyProducts">My Products</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Products" asp-action="AddNew">Add product</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Queries" asp-action="ProductQuery">Query products</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Queries" asp-action="AvailableProductQuery">Query product availability</a>
+                    </li>
+                    @if (User.IsAdmin())
+                    {
+                        <li>
+                            <a asp-controller="Products" asp-action="AddNewCategory">Add category</a>
+                        </li>
+                    }
+                    @if (PrincipalExtensions.IsSignedIn(User))
+                    {
+                        <li>
+                            <a asp-controller="auth" asp-action="logout">Logout</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a asp-controller="auth" asp-action="login">Login</a>
+                        </li>
+                    }
+                </ul>
+                <button style="float:right;margin-top:10px" class="btn btn-info" id="facebook-share-button" disabled>Share on facebook</button>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <!-- Page Content -->
+    <div class="container" style="margin-top:70px">
+
+        @if (TempData[BaseController.INFO_MSG_LIST] != null)
+        {
+            <div class="row">
+                @foreach (var infoMsg in (IEnumerable<string>)TempData[BaseController.INFO_MSG_LIST])
+                {
+                    <div class="alert alert-success user-notification">
+                        <strong> @infoMsg</strong>
+                    </div>
+                }
+            </div>
+        }
+
+        @if (TempData[BaseController.ERROR_MSG_LIST] != null)
+        {
+            <div class="row">
+                @foreach (var errorMsg in (IEnumerable<string>)TempData[BaseController.ERROR_MSG_LIST])
+                {
+                    <div class="alert alert-danger user-notification">
+                        <strong> @errorMsg</strong>
+                    </div>
+                }
+            </div>
+        }
+
+        @RenderBody()
+    </div>
+    <!-- /.container -->
+    <div class="container">
+        <hr>
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; www.shoppy.com 2016</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script src="~/js/facebookjdkinit.js"></script>
+    <script src="~/js/closablenotifications.js"></script>
+    @RenderSection("Scripts", false)
+</body>
+</html>
+
+

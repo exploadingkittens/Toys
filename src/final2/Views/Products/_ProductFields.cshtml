@@ -1,0 +1,53 @@
+﻿@model  ProductPostData
+
+<div class="form-group">
+    <label asp-for="Name" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger" />
+    </div>
+</div>
+<div class="form-group">
+    <label asp-for="Description" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger" />
+    </div>
+</div>
+<div class="form-group">
+    <label asp-for="Price" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger" />
+    </div>
+</div>
+<div class="form-group">
+    <label asp-for="Available" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Available" class="form-control" />
+        <span asp-validation-for="Available" class="text-danger" />
+    </div>
+</div>
+<div class="form-group">
+    <label asp-for="ImageUrl" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input type="file" id="product-image" />
+
+        @if (Model == null || string.IsNullOrWhiteSpace(Model.ImageUrl))
+        {
+            <img id="product-image-preview" style="display:none" />
+        }
+        else
+        {
+            <img id="product-image-preview" src="@Model.ImageUrl" />
+        }
+        @Html.HiddenFor(p => p.ImageUrl, new { id = "product-image-url-field" })
+    </div>
+</div>
+<div class="form-group">
+    <label asp-for="categoryID" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        @Html.DropDownListFor(m => m.categoryID,
+                                     new SelectList(ViewBag.Categories, "ID", "Name"))
+    </div>
+</div>

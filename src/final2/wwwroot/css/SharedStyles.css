@@ -1,0 +1,26 @@
+﻿/*!
+ * Start Bootstrap - Shop Item HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+.currencies {
+    font-size: 25px;
+}
+
+.currencies span {
+    text-shadow: 2px 2px #FF0000;
+}
+
+.product-description {
+    font-family: 'Slabo 27px', serif;
+}
+
+#product-image-preview {
+    width: 200px;
+    height: 200px;
+}
+
+.notification-close-button {
+    float: right;
+}

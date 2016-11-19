@@ -1,0 +1,5 @@
+﻿@model IEnumerable<Product>
+
+<div class="row">
+    @await Component.InvokeAsync(nameof(ProductListFromList), Model)
+</div>

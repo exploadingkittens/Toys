@@ -1,0 +1,29 @@
+﻿@model  ProductPostData
+
+@{
+    ViewData["Title"] = "Edit product";
+}
+
+<h2>Edit product @Model.Name</h2>
+
+<form asp-action="EditProduct">
+    <div class="form-horizontal">
+        <h4>Product</h4>
+        <hr />
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <input asp-for="ID" class="form-control" />
+        @await Html.PartialAsync("~/Views/Products/_ProductFields.cshtml", Model)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/imageupload.js"></script>
+}
