@@ -37,9 +37,9 @@ namespace Toys.ViewComponents
         }
     }
 
-    public class AllProductsList : ViewComponent
+    public class AllToysList : ViewComponent
     {
-        public AllProductsList(FinalContext context)
+        public AllToysList(FinalContext context)
         {
             Context = context;
         }

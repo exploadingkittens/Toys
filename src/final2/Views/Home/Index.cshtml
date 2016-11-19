@@ -16,7 +16,7 @@
     <div class="col-md-9">
         @if (ViewBag.ChosenCategory == null)
         {
-            @await Component.InvokeAsync(nameof(AllProductsList))
+            @await Component.InvokeAsync(nameof(AllToysList))
         }
         else
         {
