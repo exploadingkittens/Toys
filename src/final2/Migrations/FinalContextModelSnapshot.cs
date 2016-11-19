@@ -27,7 +27,7 @@ namespace Toys.Migrations
                     b.HasKey("ID");
                 });
 
-            modelBuilder.Entity("Toys.Models.Product", b =>
+            modelBuilder.Entity("Toys.Models.Toy", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -202,7 +202,7 @@ namespace Toys.Migrations
                     b.HasAnnotation("Relational:TableName", "UserRoles");
                 });
 
-            modelBuilder.Entity("Toys.Models.Product", b =>
+            modelBuilder.Entity("Toys.Models.Toy", b =>
                 {
                     b.HasOne("Toys.Models.Category")
                         .WithMany()
@@ -215,7 +215,7 @@ namespace Toys.Migrations
 
             modelBuilder.Entity("Toys.Models.Sale", b =>
                 {
-                    b.HasOne("Toys.Models.Product")
+                    b.HasOne("Toys.Models.Toy")
                         .WithMany()
                         .HasForeignKey("ProductID");
 

@@ -15,7 +15,7 @@ namespace Toys.Controllers
     {
         public class SaleParameter
         {
-            [Display(Name = "Product")]
+            [Display(Name = "Toy")]
             public int ProductId { get; set; }
 
             [Range(1, int.MaxValue)]
@@ -41,24 +41,24 @@ namespace Toys.Controllers
         [ValidateAntiForgeryToken]
         [Authorize(Roles = UserRoles.Admin)]
         [HttpPost]
-        public async Task<IActionResult> RemoveProduct([FromBody]int ProductId)
+        public async Task<IActionResult> RemoveToy([FromBody]int ToyId)
         {
-            await RemoveProductInternal(ProductId);
+            await RemoveProductInternal(ToyId);
 
             return RedirectToAction("Index", "Home");
         }
 
         private async Task RemoveProductInternal(int productId)
         {
-            var product = await _context.Products.FirstOrDefaultAsync(p => p.ID == productId);
+            var toy = await _context.Toys.FirstOrDefaultAsync(p => p.ID == productId);
 
-            if (product == null)
+            if (toy == null)
             {
-                AddError($"No product with id {productId} was found");
+                AddError($"No toy with id {productId} was found");
                 return;
             }
 
-            _context.Products.Remove(product);
+            _context.Toys.Remove(toy);
             await _context.SaveChangesAsync();
         }
 
@@ -87,29 +87,29 @@ namespace Toys.Controllers
                 return;
             }
 
-            var product = await _context.Products.FirstOrDefaultAsync(p => p.ID == prms.ProductId);
+            var toy = await _context.Toys.FirstOrDefaultAsync(p => p.ID == prms.ProductId);
 
-            if (product == null)
+            if (toy == null)
             {
-                AddError($"No product with id {prms.ProductId} was found");
+                AddError($"No toy with id {prms.ProductId} was found");
                 return;
             }
 
-            if (product.Available < prms.Amount)
+            if (toy.Available < prms.Amount)
             {
-                AddError($"Requested to purchase {prms.Amount} but there only {product.Available} available");
+                AddError($"Requested to purchase {prms.Amount} but there only {toy.Available} available");
                 return;
             }
 
-            product.Available -= prms.Amount;
+            toy.Available -= prms.Amount;
 
             _context.Sales.Add(new Sale
             {
                 Amount = prms.Amount,
-                Product = product,
+                Toy = toy,
                 User = await UserRoles.GetUser(User, _userManager),
                 SaleTime = DateTime.Now,
-                TotalPrice = product.Price * prms.Amount
+                TotalPrice = toy.Price * prms.Amount
             });
 
             await _context.SaveChangesAsync();
