@@ -7,7 +7,7 @@ namespace Toys.DAL
     public class FinalContext : IdentityDbContext<User>
     {
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Toy> Products { get; set; }
+        public DbSet<Toy> Toys { get; set; }
 
         public DbSet<Sale> Sales { get; set; }
 

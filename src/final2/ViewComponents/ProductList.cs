@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Toys.ViewComponents
 {
-    public class ProductListByCategory : ViewComponent
+    public class ToyListByCategory : ViewComponent
     {
-        public ProductListByCategory(FinalContext context)
+        public ToyListByCategory(FinalContext context)
         {
             Context = context;
         }
@@ -25,7 +25,7 @@ namespace Toys.ViewComponents
                 throw new Exception("fuck you");
             }
 
-            IQueryable<Toy> query = Context.Products
+            IQueryable<Toy> query = Context.Toys
                         .Where(p => p.Available > 0 &&
                                     p.Category.ID == categoryId)
                         .OrderBy(p => p.Name);
@@ -37,9 +37,9 @@ namespace Toys.ViewComponents
         }
     }
 
-    public class AllProductsList : ViewComponent
+    public class AllToysList : ViewComponent
     {
-        public AllProductsList(FinalContext context)
+        public AllToysList(FinalContext context)
         {
             Context = context;
         }
@@ -48,7 +48,7 @@ namespace Toys.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            IQueryable<Toy> query = Context.Products
+            IQueryable<Toy> query = Context.Toys
                         .Where(p => p.Available > 0)
                         .OrderBy(p => p.Name);
 
@@ -58,19 +58,19 @@ namespace Toys.ViewComponents
         }
     }
 
-    public class ProductListFromList : ViewComponent
+    public class ToyListFromList : ViewComponent
     {
-        public ProductListFromList(FinalContext context)
+        public ToyListFromList(FinalContext context)
         {
             Context = context;
         }
 
         private FinalContext Context { get; set; }
 
-        public async Task<IViewComponentResult> InvokeAsync(IEnumerable<Toy> products)
+        public async Task<IViewComponentResult> InvokeAsync(IEnumerable<Toy> toys)
         {
-            var productList = await Task.Run(() => products.ToList());
-            return View(productList);
+            var toyList = await Task.Run(() => toys.ToList());
+            return View(toyList);
         }
     }
 }

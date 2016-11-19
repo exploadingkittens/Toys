@@ -56,7 +56,7 @@ namespace Toys.Controllers
                 return View(prms);
             }
 
-            IQueryable<Toy> query = _context.Products;
+            IQueryable<Toy> query = _context.Toys;
 
             if (!string.IsNullOrWhiteSpace(prms.ToyName))
             {
@@ -106,7 +106,7 @@ namespace Toys.Controllers
                 return View(prms);
             }
 
-            IQueryable<Toy> query = _context.Products;
+            IQueryable<Toy> query = _context.Toys;
 
             if (!string.IsNullOrWhiteSpace(prms.ProductName))
             {

@@ -64,7 +64,7 @@ namespace Toys.Controllers
         {
             var user = await UserRoles.GetUser(User, _userManager);
 
-            var userProducts = _context.Products
+            var userProducts = _context.Toys
                                        .Include(p => p.Seller)
                                        .Where(p => p.Seller.Id == user.Id);
 
@@ -75,7 +75,7 @@ namespace Toys.Controllers
         [Authorize]
         public async Task<IActionResult> EditToy(int toyID)
         {
-            var toyFromDb = await _context.Products
+            var toyFromDb = await _context.Toys
                                         .Include(p => p.Seller)
                                         .FirstOrDefaultAsync(p => p.ID == toyID);
 
@@ -102,7 +102,7 @@ namespace Toys.Controllers
         [Authorize]
         public async Task<IActionResult> EditToy(ToyPostData toy)
         {
-            var toyFromDb = await _context.Products
+            var toyFromDb = await _context.Toys
                                            .Include(p => p.Seller)
                                            .FirstOrDefaultAsync(p => p.ID == toy.ID);
 
@@ -190,7 +190,7 @@ namespace Toys.Controllers
             toyPost.Seller = await UserRoles.GetUser(User, _userManager);
             toyPost.Category = await _context.Categories.FirstAsync(c => c.ID == toyPost.categoryID);
 
-            _context.Products.Add(new Toy(toyPost));
+            _context.Toys.Add(new Toy(toyPost));
 
             await _context.SaveChangesAsync();
 

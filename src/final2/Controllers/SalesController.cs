@@ -50,7 +50,7 @@ namespace Toys.Controllers
 
         private async Task RemoveProductInternal(int productId)
         {
-            var toy = await _context.Products.FirstOrDefaultAsync(p => p.ID == productId);
+            var toy = await _context.Toys.FirstOrDefaultAsync(p => p.ID == productId);
 
             if (toy == null)
             {
@@ -58,7 +58,7 @@ namespace Toys.Controllers
                 return;
             }
 
-            _context.Products.Remove(toy);
+            _context.Toys.Remove(toy);
             await _context.SaveChangesAsync();
         }
 
@@ -87,7 +87,7 @@ namespace Toys.Controllers
                 return;
             }
 
-            var toy = await _context.Products.FirstOrDefaultAsync(p => p.ID == prms.ProductId);
+            var toy = await _context.Toys.FirstOrDefaultAsync(p => p.ID == prms.ProductId);
 
             if (toy == null)
             {
