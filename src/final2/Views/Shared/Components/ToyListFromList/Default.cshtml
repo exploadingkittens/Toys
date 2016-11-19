@@ -24,7 +24,7 @@
             {
                 <form asp-controller="Sales" asp-action="MakeSale">
                     @*<div class="input-group">*@
-                        Number of items: <input type="number" name="Amount" />
+                        Number of items: <input type="number" name="Amount" min="0" value="0" max="@item.Available"/>
                         <input type="hidden" name="ToyId" value="@item.ID" />
                         <button type="submit" class="btn btn-default">BUY!</button>
                     @*</div>*@
