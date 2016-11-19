@@ -1,15 +1,15 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Data.Entity;
-using toysRus.DAL;
-using toysRus.Models;
+using Toys.DAL;
+using Toys.Models;
 using Microsoft.AspNet.Authorization;
-using toysRus.HelperClasses;
+using Toys.HelperClasses;
 using Microsoft.AspNet.Identity;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace toysRus.Controllers
+namespace Toys.Controllers
 {
     public class SalesController : BaseController
     {

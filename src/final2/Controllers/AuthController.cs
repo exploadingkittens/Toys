@@ -1,11 +1,11 @@
-﻿using toysRus.HelperClasses;
-using toysRus.Models;
+﻿using Toys.HelperClasses;
+using Toys.Models;
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Mvc;
 using System.Threading.Tasks;
 
-namespace toysRus.Controllers
+namespace Toys.Controllers
 {
     public class AuthController : BaseController
     {

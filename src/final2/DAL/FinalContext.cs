@@ -1,8 +1,8 @@
-﻿using toysRus.Models;
+﻿using Toys.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
 
-namespace toysRus.DAL
+namespace Toys.DAL
 {
     public class FinalContext : IdentityDbContext<User>
     {

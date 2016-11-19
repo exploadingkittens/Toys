@@ -1,5 +1,5 @@
-﻿using toysRus.DAL;
-using toysRus.Models;
+﻿using Toys.DAL;
+using Toys.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Data.Entity;
@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace toysRus.Controllers
+namespace Toys.Controllers
 {
     public class ProductQueryParams
     {

@@ -4,18 +4,18 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using toysRus.DAL;
+using Toys.DAL;
 using Microsoft.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Mvc;
-using toysRus.HelperClasses;
+using Toys.HelperClasses;
 using System.IO;
 using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Identity;
 using Microsoft.Extensions.OptionsModel;
 
-namespace toysRus
+namespace Toys
 {
     public class Startup
     {
@@ -41,7 +41,7 @@ namespace toysRus
                 .AddDbContext<FinalContext>(options =>
                     options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
-            services.AddIdentity<toysRus.Models.User, IdentityRole>()
+            services.AddIdentity<Toys.Models.User, IdentityRole>()
                 .AddEntityFrameworkStores<FinalContext>();
 
             // Add framework services.

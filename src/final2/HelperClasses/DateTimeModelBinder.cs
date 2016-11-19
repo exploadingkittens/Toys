@@ -3,7 +3,7 @@ using System;
 using System.Globalization;
 using System.Threading.Tasks;
 
-namespace toysRus.HelperClasses
+namespace Toys.HelperClasses
 {
     public class DateTimeModelBinder : IModelBinder
     {

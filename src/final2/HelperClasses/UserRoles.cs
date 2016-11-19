@@ -1,10 +1,10 @@
-﻿using toysRus.Models;
+﻿using Toys.Models;
 using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Claims;
 
-namespace toysRus.HelperClasses
+namespace Toys.HelperClasses
 {
     public static class UserRoles
     {

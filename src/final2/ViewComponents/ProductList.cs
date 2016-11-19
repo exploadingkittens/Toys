@@ -1,5 +1,5 @@
-﻿using toysRus.DAL;
-using toysRus.Models;
+﻿using Toys.DAL;
+using Toys.Models;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Data.Entity;
 using System;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace toysRus.ViewComponents
+namespace Toys.ViewComponents
 {
     public class ProductListByCategory : ViewComponent
     {

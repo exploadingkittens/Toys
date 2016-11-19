@@ -1,13 +1,7 @@
-﻿using toysRus.DAL;
-using Microsoft.AspNet.Mvc;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using Microsoft.AspNet.Mvc;
 using System.Threading.Tasks;
 
-namespace toysRus.ViewComponents
+namespace Toys.ViewComponents
 {
     public class ExchangeRates : ViewComponent
     {

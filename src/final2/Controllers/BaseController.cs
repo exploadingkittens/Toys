@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Mvc;
 using System.Collections.Generic;
 
-namespace toysRus.Controllers
+namespace Toys.Controllers
 {
     public abstract class BaseController: Controller
     {

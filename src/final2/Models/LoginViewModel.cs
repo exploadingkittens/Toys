@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace toysRus.Models
+namespace Toys.Models
 {
     [NotMapped]
     public class LoginViewModel : User

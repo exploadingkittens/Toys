@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
-using toysRus.DAL;
+using Toys.DAL;
 using Microsoft.Data.Entity;
 
-namespace toysRus.Controllers
+namespace Toys.Controllers
 {
     public class HomeController : BaseController
     {

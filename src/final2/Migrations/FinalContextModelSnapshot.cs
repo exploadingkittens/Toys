@@ -3,9 +3,9 @@ using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Infrastructure;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Migrations;
-using toysRus.DAL;
+using Toys.DAL;
 
-namespace toysRus.Migrations
+namespace Toys.Migrations
 {
     [DbContext(typeof(FinalContext))]
     partial class FinalContextModelSnapshot : ModelSnapshot
@@ -16,7 +16,7 @@ namespace toysRus.Migrations
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("toysRus.Models.Category", b =>
+            modelBuilder.Entity("Toys.Models.Category", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -27,7 +27,7 @@ namespace toysRus.Migrations
                     b.HasKey("ID");
                 });
 
-            modelBuilder.Entity("toysRus.Models.Product", b =>
+            modelBuilder.Entity("Toys.Models.Product", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -52,7 +52,7 @@ namespace toysRus.Migrations
                     b.HasKey("ID");
                 });
 
-            modelBuilder.Entity("toysRus.Models.Sale", b =>
+            modelBuilder.Entity("Toys.Models.Sale", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -70,7 +70,7 @@ namespace toysRus.Migrations
                     b.HasKey("ID");
                 });
 
-            modelBuilder.Entity("toysRus.Models.User", b =>
+            modelBuilder.Entity("Toys.Models.User", b =>
                 {
                     b.Property<string>("Id");
 
@@ -202,24 +202,24 @@ namespace toysRus.Migrations
                     b.HasAnnotation("Relational:TableName", "UserRoles");
                 });
 
-            modelBuilder.Entity("toysRus.Models.Product", b =>
+            modelBuilder.Entity("Toys.Models.Product", b =>
                 {
-                    b.HasOne("toysRus.Models.Category")
+                    b.HasOne("Toys.Models.Category")
                         .WithMany()
                         .HasForeignKey("CategoryID");
 
-                    b.HasOne("toysRus.Models.User")
+                    b.HasOne("Toys.Models.User")
                         .WithMany()
                         .HasForeignKey("SellerId");
                 });
 
-            modelBuilder.Entity("toysRus.Models.Sale", b =>
+            modelBuilder.Entity("Toys.Models.Sale", b =>
                 {
-                    b.HasOne("toysRus.Models.Product")
+                    b.HasOne("Toys.Models.Product")
                         .WithMany()
                         .HasForeignKey("ProductID");
 
-                    b.HasOne("toysRus.Models.User")
+                    b.HasOne("Toys.Models.User")
                         .WithMany()
                         .HasForeignKey("UserId");
                 });
@@ -233,14 +233,14 @@ namespace toysRus.Migrations
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("toysRus.Models.User")
+                    b.HasOne("Toys.Models.User")
                         .WithMany()
                         .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("toysRus.Models.User")
+                    b.HasOne("Toys.Models.User")
                         .WithMany()
                         .HasForeignKey("UserId");
                 });
@@ -251,7 +251,7 @@ namespace toysRus.Migrations
                         .WithMany()
                         .HasForeignKey("RoleId");
 
-                    b.HasOne("toysRus.Models.User")
+                    b.HasOne("Toys.Models.User")
                         .WithMany()
                         .HasForeignKey("UserId");
                 });

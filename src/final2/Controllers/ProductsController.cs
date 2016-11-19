@@ -1,9 +1,9 @@
-﻿using toysRus.DAL;
-using toysRus.Models;
+﻿using Toys.DAL;
+using Toys.Models;
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Mvc;
-using toysRus.HelperClasses;
+using Toys.HelperClasses;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Data.Entity;
@@ -14,7 +14,7 @@ using Microsoft.Extensions.PlatformAbstractions;
 using System.IO;
 using Microsoft.Net.Http.Headers;
 
-namespace toysRus.Controllers
+namespace Toys.Controllers
 {
     public class ProductPostData : Product
     {

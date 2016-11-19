@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace toysRus.Models
+namespace Toys.Models
 {
     public class User: IdentityUser
     {
