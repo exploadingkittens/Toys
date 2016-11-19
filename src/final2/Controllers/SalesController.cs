@@ -16,7 +16,7 @@ namespace Toys.Controllers
         public class SaleParameter
         {
             [Display(Name = "Toy")]
-            public int ProductId { get; set; }
+            public int ToyId { get; set; }
 
             [Range(1, int.MaxValue)]
             public int Amount { get; set; }
@@ -43,18 +43,18 @@ namespace Toys.Controllers
         [HttpPost]
         public async Task<IActionResult> RemoveToy([FromBody]int ToyId)
         {
-            await RemoveProductInternal(ToyId);
+            await RemoveToyInternal(ToyId);
 
             return RedirectToAction("Index", "Home");
         }
 
-        private async Task RemoveProductInternal(int productId)
+        private async Task RemoveToyInternal(int toyId)
         {
-            var toy = await _context.Toys.FirstOrDefaultAsync(p => p.ID == productId);
+            var toy = await _context.Toys.FirstOrDefaultAsync(p => p.ID == toyId);
 
             if (toy == null)
             {
-                AddError($"No toy with id {productId} was found");
+                AddError($"No toy with id {toyId} was found");
                 return;
             }
 
@@ -87,11 +87,11 @@ namespace Toys.Controllers
                 return;
             }
 
-            var toy = await _context.Toys.FirstOrDefaultAsync(p => p.ID == prms.ProductId);
+            var toy = await _context.Toys.FirstOrDefaultAsync(p => p.ID == prms.ToyId);
 
             if (toy == null)
             {
-                AddError($"No toy with id {prms.ProductId} was found");
+                AddError($"No toy with id {prms.ToyId} was found");
                 return;
             }
 

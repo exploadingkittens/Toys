@@ -22,7 +22,7 @@ namespace Toys.ViewComponents
         {
             if (!Context.Categories.Any(c => c.ID == categoryId))
             {
-                throw new Exception("fuck you");
+                throw new Exception("Category does not exist");
             }
 
             IQueryable<Toy> query = Context.Toys

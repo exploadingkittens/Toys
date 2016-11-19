@@ -1,0 +1,7 @@
+﻿@model IEnumerable<Toy>
+
+<div class="row" style="margin-left: 2px;">
+    Showing toys for category @ViewBag.ChosenCategory.Name
+</div>
+
+@await Component.InvokeAsync(nameof(ToyListFromList), Model)

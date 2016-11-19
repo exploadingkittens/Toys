@@ -1,18 +1,18 @@
-@model  ProductPostData
+@model  ToyPostData
 
 @{
-    ViewData["Title"] = "Add new product";
+    ViewData["Title"] = "Add new toy";
 }
 
-<h2>Add new product</h2>
+<h2>Add new toy</h2>
 
-<form id="AddNewProductForm" asp-action="AddNew">
+<form id="AddNewToyForm" asp-action="AddNew">
     <div class="form-horizontal">
-        <h4>Product</h4>
+        <h4>Toy</h4>
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
 
-        @await Html.PartialAsync("~/Views/Products/_ProductFields.cshtml", Model)
+        @await Html.PartialAsync("~/Views/Toys/_ToyFields.cshtml", Model)
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

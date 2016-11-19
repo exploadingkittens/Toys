@@ -10,7 +10,7 @@
         data.append("productImage", files[0]);
 
         $.ajax({
-            url: '/Products/UploadImage',
+            url: '/Toys/UploadImage',
             type: "POST",
             processData: false,
             contentType: false,

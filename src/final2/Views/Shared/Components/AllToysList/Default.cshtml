@@ -1,0 +1,7 @@
+﻿@model IEnumerable<Toy>
+
+<div class="row" style="margin-left: 2px;">
+    All toys
+</div>
+
+@await Component.InvokeAsync(nameof(ToyListFromList), Model)

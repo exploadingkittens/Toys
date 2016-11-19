@@ -20,6 +20,7 @@ namespace Toys.ViewComponents
             var query = Context.Categories
                         .OrderBy(c => c.Name)
                         .Include(c => c.Toys);
+            
 
             var list = await query.ToListAsync();
 

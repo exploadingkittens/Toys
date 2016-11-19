@@ -1,21 +1,21 @@
-﻿@model  AvailableProductsInCategoryParams
+﻿@model  AvailableToysInCategoryParams
 
 @{
-    ViewData["Title"] = "Find available Product";
+    ViewData["Title"] = "Find available toys";
 }
 
-<h2>Find available Product</h2>
+<h2>Find available Toy</h2>
 
-<form asp-action="AvailableProductQuery">
+<form asp-action="AvailableToyQuery">
     <div class="form-horizontal">
-        <h4>Available product find form</h4>
+        <h4>Available toy find form</h4>
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="ProductName" class="col-md-2 control-label"></label>
+            <label asp-for="ToyName" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="ProductName" class="form-control" />
-                <span asp-validation-for="ProductName" class="text-danger" />
+                <input asp-for="ToyName" class="form-control" />
+                <span asp-validation-for="ToyName" class="text-danger" />
             </div>
         </div>
         <div class="form-group">

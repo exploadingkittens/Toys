@@ -41,7 +41,7 @@ namespace Toys.Controllers
         public string CategoryName { get; set; }
     }
 
-    public class ProductsController : BaseController
+    public class ToysController : BaseController
     {
         private FinalContext _context;
         private UserManager<User> _userManager;
@@ -49,7 +49,7 @@ namespace Toys.Controllers
         private const string USER_IMAGES_FOLDER_NAME = "UserImages";
         private readonly string USER_IMAGES_DIR;
 
-        public ProductsController(FinalContext context, UserManager<User> userManager, IApplicationEnvironment hostingEnvironment)
+        public ToysController(FinalContext context, UserManager<User> userManager, IApplicationEnvironment hostingEnvironment)
         {
             _context = context;
             _userManager = userManager;
@@ -64,11 +64,11 @@ namespace Toys.Controllers
         {
             var user = await UserRoles.GetUser(User, _userManager);
 
-            var userProducts = _context.Toys
+            var userToys = _context.Toys
                                        .Include(p => p.Seller)
                                        .Where(p => p.Seller.Id == user.Id);
 
-            return View(await userProducts.ToListAsync());
+            return View(await userToys.ToListAsync());
         }
 
         [HttpGet]
@@ -112,9 +112,9 @@ namespace Toys.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            var productCategory = await _context.Categories.FirstOrDefaultAsync(c => c.ID == toy.categoryID);
+            var toyCategory = await _context.Categories.FirstOrDefaultAsync(c => c.ID == toy.categoryID);
 
-            if (productCategory == null)
+            if (toyCategory == null)
             {
                 AddError($"Category with ID {toy.categoryID} Doesn't exist");
                 return RedirectToAction("Index", "Home");
@@ -131,7 +131,7 @@ namespace Toys.Controllers
             toyFromDb.Name = toy.Name;
             toyFromDb.Price = toy.Price;
             toyFromDb.Available = toy.Available;
-            toyFromDb.Category = productCategory;
+            toyFromDb.Category = toyCategory;
 
             await _context.SaveChangesAsync();
 

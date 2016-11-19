@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Toys.Controllers
 {
-    public class ProductQueryParams
+    public class ToyQueryParams
     {
         [Display(Name ="Toy name like")]
         public string ToyName { get; set; }
@@ -22,7 +22,7 @@ namespace Toys.Controllers
     public class AvailableToysInCategoryParams
     {
         [Display(Name = "Toy name like")]
-        public string ProductName { get; set; }
+        public string ToyName { get; set; }
         [Display(Name = "Category")]
         public int? CategoryId { get; set; }
     }
@@ -39,14 +39,14 @@ namespace Toys.Controllers
         }
 
         [HttpGet]
-        public IActionResult ProductQuery()
+        public IActionResult ToyQuery()
         {
             return View();
         }
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public async Task<IActionResult> ProductQuery(ProductQueryParams prms)
+        public async Task<IActionResult> ToyQuery(ToyQueryParams prms)
         {
             if (string.IsNullOrWhiteSpace(prms.ToyName) &&
                 string.IsNullOrWhiteSpace(prms.UserName) &&
@@ -79,7 +79,7 @@ namespace Toys.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AvailableProductQuery()
+        public async Task<IActionResult> AvailableToyQuery()
         {
             var categoryList = await _context.Categories.ToListAsync();
             categoryList.Insert(0, new Category()
@@ -95,11 +95,11 @@ namespace Toys.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public async Task<IActionResult> AvailableProductQuery(AvailableToysInCategoryParams prms)
+        public async Task<IActionResult> AvailableToyQuery(AvailableToysInCategoryParams prms)
         {
             bool isCategoryChosen = prms.CategoryId != null && prms.CategoryId.Value != -1;
 
-            if (string.IsNullOrWhiteSpace(prms.ProductName) &&
+            if (string.IsNullOrWhiteSpace(prms.ToyName) &&
                 !isCategoryChosen)
             {
                 AddError("There must be at least one parameter for query");
@@ -108,9 +108,9 @@ namespace Toys.Controllers
 
             IQueryable<Toy> query = _context.Toys;
 
-            if (!string.IsNullOrWhiteSpace(prms.ProductName))
+            if (!string.IsNullOrWhiteSpace(prms.ToyName))
             {
-                query = query.Where(p => p.Name.Contains(prms.ProductName));
+                query = query.Where(p => p.Name.Contains(prms.ToyName));
             }
 
             if (isCategoryChosen)

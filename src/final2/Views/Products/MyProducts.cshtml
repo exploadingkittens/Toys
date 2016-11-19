@@ -1,11 +1,11 @@
-﻿@model IEnumerable<Product>
+﻿@model IEnumerable<Toy>
 
 @{
-    ViewData["Title"] = "My products";
+    ViewData["Title"] = "My toys";
 }
 
-<h2>My products</h2>
+<h2>My toys</h2>
 
 <div class="row">
-    @await Component.InvokeAsync(nameof(ProductListFromList), Model)
+    @await Component.InvokeAsync(nameof(ToyListFromList), Model)
 </div>

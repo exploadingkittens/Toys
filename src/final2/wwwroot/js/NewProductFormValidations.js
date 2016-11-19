@@ -1,4 +1,4 @@
-﻿$('#AddNewProductForm').submit(function (event) {
+﻿$('#AddNewToyForm').submit(function (event) {
     var picUrl = $('#product-image-url-field').val();
 
     if (!picUrl || picUrl == '') {

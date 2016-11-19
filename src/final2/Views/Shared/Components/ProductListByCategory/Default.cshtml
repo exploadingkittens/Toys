@@ -1,7 +1,0 @@
-﻿@model IEnumerable<Product>
-
-<div class="row" style="margin-left: 2px;">
-    Showing products for category @ViewBag.ChosenCategory.Name
-</div>
-
-@await Component.InvokeAsync(nameof(ProductListFromList), Model)

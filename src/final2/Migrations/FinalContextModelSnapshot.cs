@@ -59,7 +59,7 @@ namespace Toys.Migrations
 
                     b.Property<int>("Amount");
 
-                    b.Property<int?>("ProductID");
+                    b.Property<int?>("ToyID");
 
                     b.Property<DateTime>("SaleTime");
 
@@ -217,7 +217,7 @@ namespace Toys.Migrations
                 {
                     b.HasOne("Toys.Models.Toy")
                         .WithMany()
-                        .HasForeignKey("ProductID");
+                        .HasForeignKey("ToyID");
 
                     b.HasOne("Toys.Models.User")
                         .WithMany()

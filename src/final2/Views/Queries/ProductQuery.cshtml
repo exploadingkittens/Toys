@@ -1,21 +1,21 @@
-﻿@model  ProductQueryParams
+﻿@model  ToyQueryParams
 
 @{
-    ViewData["Title"] = "Find Product";
+    ViewData["Title"] = "Find Toy";
 }
 
-<h2>Find Product</h2>
+<h2>Find Toy</h2>
 
-<form asp-action="ProductQuery">
+<form asp-action="ToyQuery">
     <div class="form-horizontal">
-        <h4>Product find form</h4>
+        <h4>Toy find form</h4>
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="ProductName" class="col-md-2 control-label"></label>
+            <label asp-for="ToyName" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="ProductName" class="form-control" />
-                <span asp-validation-for="ProductName" class="text-danger" />
+                <input asp-for="ToyName" class="form-control" />
+                <span asp-validation-for="ToyName" class="text-danger" />
             </div>
         </div>
         <div class="form-group">

@@ -36,21 +36,21 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a asp-controller="Products" asp-action="MyProducts">My Products</a>
+                        <a asp-controller="Toys" asp-action="MyToys">My Toys</a>
                     </li>
                     <li>
-                        <a asp-controller="Products" asp-action="AddNew">Add product</a>
+                        <a asp-controller="Toys" asp-action="AddNew">Add toy</a>
                     </li>
                     <li>
-                        <a asp-controller="Queries" asp-action="ProductQuery">Query products</a>
+                        <a asp-controller="Queries" asp-action="ToyQuery">Query toys</a>
                     </li>
                     <li>
-                        <a asp-controller="Queries" asp-action="AvailableProductQuery">Query product availability</a>
+                        <a asp-controller="Queries" asp-action="AvailableToyQuery">Query toy availability</a>
                     </li>
                     @if (User.IsAdmin())
                     {
                         <li>
-                            <a asp-controller="Products" asp-action="AddNewCategory">Add category</a>
+                            <a asp-controller="Toys" asp-action="AddNewCategory">Add category</a>
                         </li>
                     }
                     @if (PrincipalExtensions.IsSignedIn(User))
