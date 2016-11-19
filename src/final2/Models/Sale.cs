@@ -20,7 +20,7 @@ namespace Toys.Models
 
         public double TotalPrice { get; set; }
 
-        public virtual Toy Product { get; set; }
+        public virtual Toy Toy { get; set; }
 
         public virtual User User { get; set; }
     }
