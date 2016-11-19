@@ -1,5 +1,4 @@
 ﻿using toysRus.Models;
-// bla
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
 
