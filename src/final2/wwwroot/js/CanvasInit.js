@@ -11,8 +11,8 @@
 
         ctx = canvas.getContext("2d");
         ctx.font = '20pt Calibri';
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = 'red';
         ctx.textAlign = 'center';
-        ctx.fillText('Shoppy', x, y + 7);
+        ctx.fillText('Toys R Us', x, y + 7);
     }
 });
