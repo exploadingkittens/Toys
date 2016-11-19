@@ -17,6 +17,6 @@ namespace Toys.Models
         [MinLength(3)]
         public string Name { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Toy> Toys { get; set; }
     }
 }
