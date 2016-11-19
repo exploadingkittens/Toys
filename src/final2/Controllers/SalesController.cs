@@ -15,7 +15,7 @@ namespace Toys.Controllers
     {
         public class SaleParameter
         {
-            [Display(Name = "Product")]
+            [Display(Name = "Toy")]
             public int ProductId { get; set; }
 
             [Range(1, int.MaxValue)]

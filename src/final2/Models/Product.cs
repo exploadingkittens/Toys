@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Toys.Models
 {
-    public class Product
+    public class Toy
     {
-        public Product()
+        public Toy()
         {}
 
-        public Product(Product other)
+        public Toy(Toy other)
         {
             this.ID = other.ID;
             this.Name = other.Name;
@@ -30,7 +30,7 @@ namespace Toys.Models
 
         [Required]
         [MinLength(3)]
-        [Display(Name="Product Name")]
+        [Display(Name="Toy Name")]
         public string Name { get; set; }
 
         [Required]
@@ -44,7 +44,7 @@ namespace Toys.Models
         public double Price { get; set; }
 
         [Required]
-        [Display(Name = "Product Image")]
+        [Display(Name = "Toy Image")]
         public string ImageUrl { get; set; }
 
         [Required]

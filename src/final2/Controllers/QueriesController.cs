@@ -11,17 +11,17 @@ namespace Toys.Controllers
 {
     public class ProductQueryParams
     {
-        [Display(Name ="Product name like")]
-        public string ProductName { get; set; }
+        [Display(Name ="Toy name like")]
+        public string ToyName { get; set; }
         [Display(Name ="User name like")]
         public string UserName { get; set; }
         [Display(Name ="Max price")]
         public int? MaxPrice { get; set; }
     }
 
-    public class AvailableProductsInCategoryParams
+    public class AvailableToysInCategoryParams
     {
-        [Display(Name = "Product name like")]
+        [Display(Name = "Toy name like")]
         public string ProductName { get; set; }
         [Display(Name = "Category")]
         public int? CategoryId { get; set; }
@@ -48,7 +48,7 @@ namespace Toys.Controllers
         [HttpPost]
         public async Task<IActionResult> ProductQuery(ProductQueryParams prms)
         {
-            if (string.IsNullOrWhiteSpace(prms.ProductName) &&
+            if (string.IsNullOrWhiteSpace(prms.ToyName) &&
                 string.IsNullOrWhiteSpace(prms.UserName) &&
                 prms.MaxPrice == null)
             {
@@ -56,11 +56,11 @@ namespace Toys.Controllers
                 return View(prms);
             }
 
-            IQueryable<Product> query = _context.Products;
+            IQueryable<Toy> query = _context.Products;
 
-            if (!string.IsNullOrWhiteSpace(prms.ProductName))
+            if (!string.IsNullOrWhiteSpace(prms.ToyName))
             {
-                query = query.Where(p => p.Name.Contains(prms.ProductName));
+                query = query.Where(p => p.Name.Contains(prms.ToyName));
             }
 
             if (!string.IsNullOrWhiteSpace(prms.UserName))
@@ -95,7 +95,7 @@ namespace Toys.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public async Task<IActionResult> AvailableProductQuery(AvailableProductsInCategoryParams prms)
+        public async Task<IActionResult> AvailableProductQuery(AvailableToysInCategoryParams prms)
         {
             bool isCategoryChosen = prms.CategoryId != null && prms.CategoryId.Value != -1;
 
@@ -106,7 +106,7 @@ namespace Toys.Controllers
                 return View(prms);
             }
 
-            IQueryable<Product> query = _context.Products;
+            IQueryable<Toy> query = _context.Products;
 
             if (!string.IsNullOrWhiteSpace(prms.ProductName))
             {

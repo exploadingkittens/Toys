@@ -25,7 +25,7 @@ namespace Toys.ViewComponents
                 throw new Exception("fuck you");
             }
 
-            IQueryable<Product> query = Context.Products
+            IQueryable<Toy> query = Context.Products
                         .Where(p => p.Available > 0 &&
                                     p.Category.ID == categoryId)
                         .OrderBy(p => p.Name);
@@ -48,7 +48,7 @@ namespace Toys.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            IQueryable<Product> query = Context.Products
+            IQueryable<Toy> query = Context.Products
                         .Where(p => p.Available > 0)
                         .OrderBy(p => p.Name);
 
@@ -67,7 +67,7 @@ namespace Toys.ViewComponents
 
         private FinalContext Context { get; set; }
 
-        public async Task<IViewComponentResult> InvokeAsync(IEnumerable<Product> products)
+        public async Task<IViewComponentResult> InvokeAsync(IEnumerable<Toy> products)
         {
             var productList = await Task.Run(() => products.ToList());
             return View(productList);

@@ -12,6 +12,6 @@ namespace Toys.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        public virtual ICollection<Product> Pruducts { get; set; }
+        public virtual ICollection<Toy> Pruducts { get; set; }
     }
 }

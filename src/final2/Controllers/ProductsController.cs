@@ -16,28 +16,28 @@ using Microsoft.Net.Http.Headers;
 
 namespace Toys.Controllers
 {
-    public class ProductPostData : Product
+    public class ToyPostData : Toy
     {
-        public ProductPostData()
+        public ToyPostData()
         { }
 
-        public ProductPostData(Product data) : base(data)
+        public ToyPostData(Toy data) : base(data)
         { }
 
-        public ProductPostData(ProductPostData data) : this((Product)data)
+        public ToyPostData(ToyPostData data) : this((Toy)data)
         {
             this.categoryID = data.categoryID;
         }
 
         [Required]
-        [Display(Name = "Product category")]
+        [Display(Name = "Toy category")]
         public int categoryID { get; set; }
     }
 
     public class AddCategoryPostData
     {
         [Required]
-        [Display(Name = "Product category")]
+        [Display(Name = "Toy category")]
         public string CategoryName { get; set; }
     }
 
@@ -60,7 +60,7 @@ namespace Toys.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> MyProducts()
+        public async Task<IActionResult> MyToys()
         {
             var user = await UserRoles.GetUser(User, _userManager);
 
@@ -73,69 +73,69 @@ namespace Toys.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> EditProduct(int productID)
+        public async Task<IActionResult> EditToy(int toyID)
         {
-            var productFromDb = await _context.Products
+            var toyFromDb = await _context.Products
                                         .Include(p => p.Seller)
-                                        .FirstOrDefaultAsync(p => p.ID == productID);
+                                        .FirstOrDefaultAsync(p => p.ID == toyID);
 
-            if (productFromDb == null)
+            if (toyFromDb == null)
             {
-                AddError($"Product with ID {productID} Doesn't exist");
+                AddError($"Toy with ID {toyID} Doesn't exist");
                 return RedirectToAction("Index", "Home");
             }
 
-            if (productFromDb.Seller.Id != User.GetUserId() &&
+            if (toyFromDb.Seller.Id != User.GetUserId() &&
                 !User.IsAdmin())
             {
-                AddError($"Only the seller of the item or an admin can update a product's details");
+                AddError($"Only the seller of the item or an admin can update a toy's details");
                 return RedirectToAction("Index", "Home");
             }
 
             ViewBag.Categories = await _context.Categories.ToListAsync();
 
-            return View(new ProductPostData(productFromDb));
+            return View(new ToyPostData(toyFromDb));
         }
 
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> EditProduct(ProductPostData product)
+        public async Task<IActionResult> EditToy(ToyPostData toy)
         {
-            var productFromDb = await _context.Products
+            var toyFromDb = await _context.Products
                                            .Include(p => p.Seller)
-                                           .FirstOrDefaultAsync(p => p.ID == product.ID);
+                                           .FirstOrDefaultAsync(p => p.ID == toy.ID);
 
-            if (productFromDb == null)
+            if (toyFromDb == null)
             {
-                AddError($"Product with ID {product.ID} Doesn't exist");
+                AddError($"Toy with ID {toy.ID} Doesn't exist");
                 return RedirectToAction("Index", "Home");
             }
 
-            var productCategory = await _context.Categories.FirstOrDefaultAsync(c => c.ID == product.categoryID);
+            var productCategory = await _context.Categories.FirstOrDefaultAsync(c => c.ID == toy.categoryID);
 
             if (productCategory == null)
             {
-                AddError($"Category with ID {product.categoryID} Doesn't exist");
+                AddError($"Category with ID {toy.categoryID} Doesn't exist");
                 return RedirectToAction("Index", "Home");
             }
 
-            if (productFromDb.Seller.Id != User.GetUserId() &&
+            if (toyFromDb.Seller.Id != User.GetUserId() &&
                 !User.IsAdmin())
             {
-                AddError($"Only the seller of the item or an admin can update a product's details");
+                AddError($"Only the seller of the item or an admin can update a toy's details");
                 return RedirectToAction("Index", "Home");
             }
 
-            productFromDb.ImageUrl = product.ImageUrl;
-            productFromDb.Name = product.Name;
-            productFromDb.Price = product.Price;
-            productFromDb.Available = product.Available;
-            productFromDb.Category = productCategory;
+            toyFromDb.ImageUrl = toy.ImageUrl;
+            toyFromDb.Name = toy.Name;
+            toyFromDb.Price = toy.Price;
+            toyFromDb.Available = toy.Available;
+            toyFromDb.Category = productCategory;
 
             await _context.SaveChangesAsync();
 
-            AddInfo($"Product {product.Name} succefully updated");
+            AddInfo($"Toy {toy.Name} succefully updated");
 
             return RedirectToAction("Index", "Home");
         }
@@ -179,22 +179,22 @@ namespace Toys.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> AddNew(ProductPostData prod)
+        public async Task<IActionResult> AddNew(ToyPostData toyPost)
         {
             if (!ModelState.IsValid)
             {
                 AddError("Model not valid");
-                return View(prod);
+                return View(toyPost);
             }
 
-            prod.Seller = await UserRoles.GetUser(User, _userManager);
-            prod.Category = await _context.Categories.FirstAsync(c => c.ID == prod.categoryID);
+            toyPost.Seller = await UserRoles.GetUser(User, _userManager);
+            toyPost.Category = await _context.Categories.FirstAsync(c => c.ID == toyPost.categoryID);
 
-            _context.Products.Add(new Product(prod));
+            _context.Products.Add(new Toy(toyPost));
 
             await _context.SaveChangesAsync();
 
-            AddInfo($"Product {prod.Name} added");
+            AddInfo($"Toy {toyPost.Name} added");
 
             return RedirectToAction("Index", "Home");
         }
