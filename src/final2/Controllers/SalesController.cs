@@ -43,8 +43,8 @@ namespace Toys.Controllers
         [HttpPost]
         public async Task<IActionResult> RemoveToy([FromBody]int ToyId)
         {
-            await RemoveToyInternal(ToyId);
-
+            await RemoveToyInternal(int.Parse(Request.Form["ToyId"].ToArray()[0]));
+            
             return RedirectToAction("Index", "Home");
         }
 
@@ -58,6 +58,7 @@ namespace Toys.Controllers
                 return;
             }
 
+            AddInfo("Toy - " + toy.Name + " - was deleted."); 
             _context.Toys.Remove(toy);
             await _context.SaveChangesAsync();
         }
