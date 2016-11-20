@@ -31,7 +31,7 @@
 <div class="form-group">
     <label asp-for="ImageUrl" class="col-md-2 control-label"></label>
     <div class="col-md-10">
-        <input type="file" id="product-image" />
+        <input type="file" id="product-image" class="btn btn-default"/>
 
         @if (Model == null || string.IsNullOrWhiteSpace(Model.ImageUrl))
         {

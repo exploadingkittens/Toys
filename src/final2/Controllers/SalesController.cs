@@ -39,7 +39,6 @@ namespace Toys.Controllers
         }
 
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = UserRoles.Admin)]
         [HttpPost]
         public async Task<IActionResult> RemoveToy([FromBody]int ToyId)
         {
@@ -52,11 +51,20 @@ namespace Toys.Controllers
         {
             var toy = await _context.Toys.FirstOrDefaultAsync(p => p.ID == toyId);
 
+            var currUser = await UserRoles.GetUser(User, _userManager);
+
             if (toy == null)
             {
                 AddError($"No toy with id {toyId} was found");
                 return;
             }
+            if (toy.Seller != (currUser) && !UserRoles.IsAdmin(User))
+            {
+                AddError("You cannot remove a toy that is not yours!");
+                return;
+            }
+            
+            //if (toy.Seller != R)
 
             AddInfo("Toy - " + toy.Name + " - was deleted."); 
             _context.Toys.Remove(toy);

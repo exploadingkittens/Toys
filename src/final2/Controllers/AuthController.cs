@@ -4,6 +4,8 @@ using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Mvc;
 using System.Threading.Tasks;
+using System.Security.Principal;
+using System.Net;
 
 namespace Toys.Controllers
 {
@@ -102,7 +104,7 @@ namespace Toys.Controllers
         public async Task<ActionResult> Logout()
         {
             await m_SigninManager.SignOutAsync();
-
+            
             return RedirectToAction("Index", "Home");
         }
 
