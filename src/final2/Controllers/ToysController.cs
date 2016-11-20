@@ -127,6 +127,7 @@ namespace Toys.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            toyFromDb.Description = toy.Description;
             toyFromDb.ImageUrl = toy.ImageUrl;
             toyFromDb.Name = toy.Name;
             toyFromDb.Price = toy.Price;
