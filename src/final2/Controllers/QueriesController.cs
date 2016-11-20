@@ -75,7 +75,7 @@ namespace Toys.Controllers
 
             query = query.Include(p => p.Seller);
 
-            return View("FilteredProducts", await query.ToListAsync());
+            return View("FilteredToys", await query.ToListAsync());
         }
 
         [HttpGet]
@@ -128,7 +128,7 @@ namespace Toys.Controllers
 
             query = query.Include(p => p.Seller);
 
-            return View("FilteredProducts", await query.ToListAsync());
+            return View("FilteredToys", await query.ToListAsync());
         }
     }
 }
