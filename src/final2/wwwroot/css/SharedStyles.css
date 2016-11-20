@@ -24,3 +24,49 @@
 .notification-close-button {
     float: right;
 }
+
+.guttercontainerleft,
+.guttercontainerright {
+    width: 965px;
+    position: relative;
+    top: inherit;
+    margin: auto;
+    transition: top 500ms linear 200ms;
+}
+
+.guttercontainerright .gutter_inner {
+    display: block;
+    max-height: 800px;
+    width: 280px;
+    position: absolute;
+    /*right: 50%;*/
+    /*margin-right: -762px;*/
+    right: -280px;
+    overflow:  hidden;
+}
+
+.guttercontainerright .gutter_inner img {
+    float: left;
+    width: 100%;
+}
+
+.guttercontainerleft .gutter_inner {
+    display: block;
+    max-height: 2000px;
+    width: 280px;
+    position: absolute;
+    /*left: 50%;*/
+    /*margin-left: -773px;*/
+    /*margin-left: -763px;*/
+    left: -280px;
+    overflow: hidden;
+}
+
+.guttercontainerleft .gutter_inner img {
+    float: right;
+    width: 100%;
+}
+
+.guttercontainerright a {
+    text-decoration: none;
+}

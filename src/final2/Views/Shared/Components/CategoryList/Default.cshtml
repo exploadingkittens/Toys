@@ -6,11 +6,11 @@
     {
         @if (ViewBag.ChosenCategory != null && ViewBag.ChosenCategory.ID == item.ID)
         {
-            <a href="" class="list-group-item active">@item.Name (@item.Toys.Count)</a>
+            <a href="" class="list-group-item active">@item.Name (@item.Toys.Where(p => p.Available > 0).ToList().Count)</a>
         }
         else
         {
-            <a asp-controller="Home" asp-action="ItemsInCategory" asp-route-categoryId="@item.ID" class="list-group-item">@item.Name (@item.Toys.Count)</a>
+            <a asp-controller="Home" asp-action="ItemsInCategory" asp-route-categoryId="@item.ID" class="list-group-item">@item.Name (@item.Toys.Where(p => p.Available > 0).ToList().Count)</a>
         }
     }
     @if (ViewBag.ChosenCategory != null)
